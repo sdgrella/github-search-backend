@@ -3,8 +3,6 @@ const cors = require("cors");
 const { Octokit } = require("@octokit/core");
 const mongoose = require("mongoose");
 const app = express();
-const Favorite = require("../models/Favorite");
-var timeout = require("connect-timeout");
 
 require("dotenv").config();
 
