@@ -3,9 +3,9 @@ const cors = require("cors");
 const { Octokit } = require("@octokit/core");
 const mongoose = require("mongoose");
 const app = express();
-const Favorite = require("./models/Favorite.js");
-require('dotenv').config({ path: 'ENV_FILENAME' });
-dotenv.config();
+const Favorite = require("./models/Favorite");
+
+require("dotenv").config();
 
 app.use(express.json());
 
