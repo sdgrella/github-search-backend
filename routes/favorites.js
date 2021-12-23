@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Favorite = require("../models/Favorite");
 
 //add a favorite
-router.post("/", async (req, res) => {
+app.post("/", async (req, res) => {
   const newFavorite = new Favorite(req.body);
   try {
     const savedFavorite = await newFavorite.save();
@@ -14,7 +14,7 @@ router.post("/", async (req, res) => {
 
 //get all favorites
 
-router.get("/", async (req, res) => {
+app.get("/", async (req, res) => {
   try {
     const favorites = await Favorite.find();
     res.status(200).json(favorites);

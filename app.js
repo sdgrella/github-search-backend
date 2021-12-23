@@ -53,7 +53,28 @@ app.post("/search_org", async (req, res) => {
   }
 });
 
-app.use("/favorites", favoriteRoute);
+//add a favorite
+app.post("/add_favorite", async (req, res) => {
+  const newFavorite = new Favorite(req.body);
+  try {
+    const savedFavorite = await newFavorite.save();
+    res.status(200).json(savedFavorite);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+
+//get all favorites
+
+app.get("/get_favorites", async (req, res) => {
+  try {
+    const favorites = await Favorite.find();
+    res.status(200).json(favorites);
+  } catch (error) {
+    res.status(500).json(error);
+  }
+});
 
 app.listen(process.env.PORT || 5000, () => {
   console.log("server has started on port 5000");
