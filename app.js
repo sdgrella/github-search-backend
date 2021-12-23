@@ -3,7 +3,7 @@ const cors = require("cors");
 const { Octokit } = require("@octokit/core");
 const mongoose = require("mongoose");
 const app = express();
-const favoriteRoute = require("./routes/favorites");
+const Favorite = require("../models/Favorite");
 var timeout = require("connect-timeout");
 
 require("dotenv").config();
@@ -31,7 +31,6 @@ const octokit = new Octokit({
 
 app.post("/get_orgs", async (req, res) => {
   try {
-    const { search } = req.body;
     const getSearch = await octokit.request("GET /organizations");
     res.json(getSearch);
   } catch (err) {
